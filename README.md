@@ -5,6 +5,19 @@
 
 This is an example PouchDB Todo application with replication to CouchDB.
 
+
+## Dependencies
+
+All javascript and css dependencies for this example are loaded through a CDN.
+
+For remote replication to work properly with this example you will need to install a local copy of
+[PouchDB](http://couchdb.apache.org) and configure security as described
+in the [CouchDB security and PouchDB authentication](http://www.mircozeiss.com/couchdb-security-and-pouchdb-authentication/) article.
+
+If you would like to test remote replication uncomment the "replication" lines in the source code at the bottom of this file.
+
+
+
 ## Install
 
 #### Download
@@ -29,17 +42,6 @@ http-server ./
 ```
 http://localhost:3000/index.htm
 ```
-
-
-## Dependencies
-
-All javascript and css dependencies for this example are loaded through a CDN.
-
-For remote replication to work properly with this example you will need to install a local copy of
-[PouchDB](http://couchdb.apache.org) and configure security as described
-in the [CouchDB security and PouchDB authentication](http://www.mircozeiss.com/couchdb-security-and-pouchdb-authentication/) article.
-
-If you would like to test remote replication uncomment the "replication" lines in the source code at the bottom of this file.
 
 ## References
 
