@@ -22,6 +22,6 @@ This example was built using the following references. Thanks!
 * [Official PouchDB API Refenence](http://pouchdb.com/api.html)
 * [Article: CouchDB everywhere with PouchDB - Dale Harvey, Mozilla](https://www.youtube.com/watch?v=TO4oGnDxkY0)
 * [Article: Sync multiple AngularJS apps without server via PouchDB](http://www.mircozeiss.com/sync-multiple-angularjs-apps-without-server-via-pouchdb/)
-* CouchDB security and PouchDB authentication(http://www.mircozeiss.com/couchdb-security-and-pouchdb-authentication/)
+* [CouchDB security and PouchDB authentication](http://www.mircozeiss.com/couchdb-security-and-pouchdb-authentication/)
 * [Apache CouchDB Site/Download](http://couchdb.apache.org/)
 
