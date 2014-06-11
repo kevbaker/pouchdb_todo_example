@@ -84,11 +84,12 @@
       // ## Initialize the PouchDB database.
       var db = new PouchDB('todos');
 
-      // ## Setup replication to remote CouchDB.
+      // ## Setup replication to remote CouchDB. (Optional)
 
-      // This test was run on a local CloadAnt instance, http://couchdb.apache.org
-      db.replicate.to('http://127.0.0.1:5984/todos', {live: true});
-      db.replicate.from('http://127.0.0.1:5984/todos', {live: true});
+      // This was run on a local CouchDB instance, http://couchdb.apache.org
+      // NOTE: uncomment the below two lines to try replication. Please review the README first.
+      //db.replicate.to('http://127.0.0.1:5984/todos', {live: true});
+      //db.replicate.from('http://127.0.0.1:5984/todos', {live: true});
 
       // ## Setup event handlers
 
