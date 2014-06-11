@@ -9,6 +9,11 @@ While I found a lot of great references that explained various parts of PouchDB,
 
 Read the comments of the `index.html` file for details on how this works.
 
+## Preview
+
+You can preview the PouchDB Todo Example on Github Pages here: [kevbaker.github.io/pouchdb_todo_example](http://kevbaker.github.io/pouchdb_todo_example/)
+
+
 ## Dependencies
 
 I put all the HTML, CSS, and Javascript in one file to make it easy to install.
