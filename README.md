@@ -1,7 +1,4 @@
-![check](http://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Check_font_awesome.svg/120px-Check_font_awesome.svg.png)
-
-
-# PouchDB Todo Example
+# PouchDB Todo Example ![check](http://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Check_font_awesome.svg/120px-Check_font_awesome.svg.png)
 
 ## Overview
 
