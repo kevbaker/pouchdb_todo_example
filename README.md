@@ -18,7 +18,7 @@ If you would like to test remote replication uncomment the "replication" lines i
 
 
 
-## Install
+## Installation
 
 #### Download
 
