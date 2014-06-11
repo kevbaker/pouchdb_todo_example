@@ -3,10 +3,16 @@
 
 ## Overview
 
-This is an example PouchDB Todo application with replication to CouchDB.
+This is an example PouchDB Todo application with replication to CouchDB. 
+
+While I found a lot of great references that explained various parts of PouchDB, I didn't find a complete example for what I was looking to do. I figured I could learn it best by pull the details into a little example app. So here you go!
+
+Read the comments of the `index.html` file to for details on how this works.
 
 
 ## Dependencies
+
+I put all the HTML, CSS, and Javascript in one file to make it easy to install.
 
 All javascript and css dependencies for this example are loaded through a CDN.
 
