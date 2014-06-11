@@ -53,4 +53,4 @@ This example was built using the following references. Thanks!
 
 ## Overkill
 
-Sorry for the overkill README. Kind of a bit much for this project ;)
+Sorry for the overkill README. Kind of a bit much for this little project ;)
