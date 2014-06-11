@@ -3,7 +3,7 @@
 
 ## Overview
 
-This is an example Todo application that uses PouchDB and CouchDB for local and remote persistence through PouchDb replication.
+This is an example PouchDB Todo application with replication to CouchDB.
 
 ## Dependencies
 
