@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PouchDB Todo Example</title>
+
+
+    <!-- bootstrap to make the example looks snazzy-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+    <!-- pouchdb, required for pouchdb application -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pouchdb/2.2.3/pouchdb.js"></script>
+
+  </head>
+
+  <body style="padding: 40px;">
+
+    <div id="example-header">
+      <div class="panel-heading">
+        <h1>PouchDB Todo Example</h1>
+      </div>
+      <div class="panel-body">
+        <h3>Overview</h3>
+        <p>
+          This is an example Todo application that uses PouchDB and CouchDB for local and remote persistance.
+        </p>
+        <h3>Dependencies</h3>
+        <p>
+          All dependencies for this example are loaded through a CDN.
+        </p>
+        <p>
+          For remote replication to work properly with this example you will need to install a local copy of
+          <a href="http://couchdb.apache.org/">CouchDB</a> and configure security as described
+          in the <a href="CouchDB security and PouchDB authentication">CouchDB security and PouchDB authentication</a> article.
+
+          If you would like to test remote replication uncomment the "replication" lines in the source code at the bottom of this file.
+        </p>
+        <h3>References</h3>
+        <p>
+          This example was built using the following references. Thanks!
+          <ul>
+            <li><a href="http://pouchdb.com/api.html">Official PouchDB API Refenence</a></li>
+            <li><a href="https://www.youtube.com/watch?v=TO4oGnDxkY0">Article: CouchDB everywhere with PouchDB - Dale Harvey, Mozilla</a></li>
+            <li><a href="http://www.mircozeiss.com/sync-multiple-angularjs-apps-without-server-via-pouchdb/">Article: Sync multiple AngularJS
+              apps without server via PouchDB</a></li>
+            <li><a href="http://www.mircozeiss.com/couchdb-security-and-pouchdb-authentication/">CouchDB security and PouchDB authentication</a></li>
+            <li><a href="http://couchdb.apache.org/">Apache CouchDB Site/Download</a></li>
+          </ul>
+        </p>
+      </div>
+    </div>
+
+    <div id="app" class="panel panel-default" style="margin-bottom: 300px;">
+
+      <!-- form to add / reset todos -->
+      <div class="well" style="margin:20px;">
+        <form class="form-inline" role="form">
+          <input type="text" id="todo" class="form-control" placeholder="Enter a todo here">
+          <a href="#app" id="add-button" class="btn btn-sm btn-info">add</a>
+          <a href="#app" id="reset-button" class="btn btn-sm btn-danger">reset todos</a>
+        </form>
+      </div>
+
+      <!-- table to display tod" s -->
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>todo</th>
+            <th>remove</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+      </table>
+
+      </div>
+
+    <!-- # Application code -->
+    <script charset="utf-8">
+
+      // ## Initialize the PouchDB database.
+      var db = new PouchDB('todos');
+
+      // ## Setup replication to remote CouchDB.
+
+      // This test was run on a local CloadAnt instance, http://couchdb.apache.org
+      db.replicate.to('http://127.0.0.1:5984/todos', {live: true});
+      db.replicate.from('http://127.0.0.1:5984/todos', {live: true});
+
+      // ## Setup event handlers
+
+      // Add a todo to pouch db, pouchdb will choose an "id"
+      var addTodoHandler = function(){
+        var todo = $('#todo');
+        db.post({text:todo.val()},updateDocs);
+        todo.val('');
+      }
+
+      // Delete a todo, get the doc from id then delete
+      var deleteTodoHandler = function(id){
+        db.get(id,function(err,doc){
+          console.log("deleteTodo!");
+          db.remove(doc,[], updateDocs);
+        });
+      }
+
+      // Reset todos, get all docs then delete by "id", "rev" objects
+      var resetTodosHandler = function(){
+        console.log("resetTodo!");
+        db.allDocs(function(err, result){
+          deletedDocs = [];
+          for (key in result.rows) {
+            doc = result.rows[key];
+            deletedDocs.push({'_id':doc['id'],'_rev':doc['value']['rev'],'_deleted':true});
+          }
+          db.bulkDocs(deletedDocs, updateDocs);
+        });
+      }
+      // set handlers to html buttons
+      $('#add-button').click(addTodoHandler);
+      $('#reset-button').click(resetTodosHandler);
+
+
+      // ## Setup display update function
+
+      // get all docs for display
+      var updateDocs = function(){
+        db.allDocs({include_docs: true, descending: false}, updateConsole);
+      }
+      // update the console ui with a bunch of html
+      var updateConsole = function(err, result){
+        console.log("updateConsole!");
+        var table = $('#table-body');
+        table.empty();
+        if (result.rows.length == 0) {
+          table.append("<tr><td>Please enter a todo above</td></tr>");
+        }
+        else {
+          for (var key in result.rows){
+            item = result.rows[key];
+            table.append("<tr>"+
+              "<td>"+item.doc['text']+"</td>"+
+              "<td> <a href='#app' onclick=\"deleteTodoHandler('"+item['id']+"');\"><span class='glyphicon glyphicon-trash'></span></a></td>"+
+              "</tr>");
+          }
+        }
+      }
+
+      // ## Initialize the interface
+      updateDocs();
+
+    </script>
+  </body>
+
+</html>
