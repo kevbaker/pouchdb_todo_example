@@ -33,7 +33,7 @@ http://localhost:3000/index.htm
 
 ## Dependencies
 
-All dependencies for this example are loaded through a CDN.
+All javascript and css dependencies for this example are loaded through a CDN.
 
 For remote replication to work properly with this example you will need to install a local copy of
 [PouchDB](http://couchdb.apache.org) and configure security as described
@@ -53,4 +53,4 @@ This example was built using the following references. Thanks!
 
 ## Overkill
 
-Sorry for the overkill README. Kind of a bit much for this little project ;)
+Sorry for the overkill README. Kind of a bit much for this little example project ;)
