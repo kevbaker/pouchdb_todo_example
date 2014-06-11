@@ -5,6 +5,32 @@
 
 This is an example PouchDB Todo application with replication to CouchDB.
 
+## Install
+
+#### Download
+
+Download the project form this git repo.
+
+```bash
+git clone git@github.com:kevbaker/pouchdb_todo_example.git
+cd pouchdb_todo_example
+```
+#### Install Webserver
+
+Optionally install node webserver for quick viewing
+
+```bash
+npm install http-server -g
+http-server ./
+```
+
+#### View in Browser
+
+```
+http://localhost:3000/index.htm
+```
+
+
 ## Dependencies
 
 All dependencies for this example are loaded through a CDN.
