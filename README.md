@@ -51,3 +51,6 @@ This example was built using the following references. Thanks!
 * [CouchDB security and PouchDB authentication](http://www.mircozeiss.com/couchdb-security-and-pouchdb-authentication/)
 * [Apache CouchDB Site/Download](http://couchdb.apache.org/)
 
+## Overkill
+
+Sorry for the overkill README. Kind of a bit much for this project ;)
